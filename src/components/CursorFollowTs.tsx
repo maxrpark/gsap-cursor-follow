@@ -36,9 +36,9 @@ const CursorFollowTs: React.FC = () => {
         // run costume function
         const target = e.target as HTMLElement;
         if (target && target.classList.contains("title")) {
-            gsap.from(".title", {
-                rotate: 360,
-            });
+            // gsap.from(".title", {
+            //     rotate: 360,
+            // });
         }
     };
 

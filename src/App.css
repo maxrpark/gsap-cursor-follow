@@ -40,6 +40,8 @@ body {
     color: var(--color-white);
     text-transform: capitalize;
 }
+
+/* change with to not show on mobile */
 @media screen and (max-width: 1300px) {
     .ball {
         display: none;
