@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 interface Cordinates {
     x: number;
@@ -8,6 +8,8 @@ interface Cordinates {
 const CursorFollowTs: React.FC = () => {
     const ball = useRef<HTMLDivElement>(null!);
     const innerBall = useRef<HTMLDivElement>(null!);
+
+    const [size, setSize] = useState(window.innerWidth);
 
     let pos: Cordinates;
     let mouse: Cordinates;
@@ -36,20 +38,21 @@ const CursorFollowTs: React.FC = () => {
         // run costume function
         const target = e.target as HTMLElement;
         if (target && target.classList.contains("title")) {
-            // gsap.from(".title", {
-            //     rotate: 360,
-            // });
+            console.log("hello");
         }
     };
 
     useEffect(() => {
-        const media_query = "screen and (min-width:1300px)";
-        const matched = window.matchMedia(media_query).matches;
-        if (matched) {
+        window.addEventListener("resize", () => setSize(window.innerWidth));
+        if (size > 960) {
             window.addEventListener("mousemove", moveCoursorFunc);
+            ball.current.style.display = "block";
+        } else {
+            ball.current.style.display = "none";
         }
         return () => {
             window.removeEventListener("mousemove", moveCoursorFunc);
+            window.addEventListener("resize", () => setSize(window.innerWidth));
         };
     });
     return (
