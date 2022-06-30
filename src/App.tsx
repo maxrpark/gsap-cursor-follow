@@ -1,16 +1,24 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import { CursorFollowTs, CursorFollowJS } from "./components";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import { CursorFollowTs, CursorFollowJS, Navbar } from "./components";
 
 const App: React.FC = () => {
     return (
-        <div>
+        <BrowserRouter>
+            <Navbar />
             <CursorFollowTs />
 
             {/* <CursorFollowJS /> */}
             <h2 className='title'>hello</h2>
-        </div>
+            <Routes>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/about' element={<About />}></Route>
+            </Routes>
+        </BrowserRouter>
     );
 };
 

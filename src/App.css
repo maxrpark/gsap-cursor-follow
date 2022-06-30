@@ -41,12 +41,6 @@ body {
     text-transform: capitalize;
 }
 
-/* change with to not show on mobile */
-/* @media screen and (max-width: 1300px) {
-    .ball {
-        display: none;
-    }
-} */
 .zoom {
     transform: scale(5);
     max-height: 50px;

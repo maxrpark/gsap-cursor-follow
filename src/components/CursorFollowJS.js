@@ -1,9 +1,10 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 
 const CursorFollowTs = () => {
     const ball = useRef(null);
     const innerBall = useRef(null);
+    const [size, setSize] = useState(window.innerWidth);
 
     let pos, mouse;
 
@@ -28,22 +29,30 @@ const CursorFollowTs = () => {
             xSet(pos.x);
             ySet(pos.y);
         });
-
-        // run costume function
         const target = e.target;
-        if (target && target.classList.contains("title")) {
+        // run costume function
+        if (target && target.classList.contains("navLink")) {
+            ball.current.classList.add("ball-zoom");
+        } else {
+            ball.current.classList.remove("ball-zoom");
         }
     };
 
+    const getWindowSize = () => {
+        setSize(window.innerWidth);
+    };
+
     useEffect(() => {
-        console.log("works");
-        const media_query = "screen and (min-width:1300px)";
-        const matched = window.matchMedia(media_query).matches;
-        if (matched) {
+        window.addEventListener("resize", getWindowSize);
+        if (size > 960) {
             window.addEventListener("mousemove", moveCoursorFunc);
+            ball.current.style.display = "block";
+        } else {
+            ball.current.style.display = "none";
         }
         return () => {
             window.removeEventListener("mousemove", moveCoursorFunc);
+            window.removeEventListener("resize", getWindowSize);
         };
     });
     return (

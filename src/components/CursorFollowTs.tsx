@@ -8,7 +8,6 @@ interface Cordinates {
 const CursorFollowTs: React.FC = () => {
     const ball = useRef<HTMLDivElement>(null!);
     const innerBall = useRef<HTMLDivElement>(null!);
-
     const [size, setSize] = useState(window.innerWidth);
 
     let pos: Cordinates;
@@ -37,13 +36,20 @@ const CursorFollowTs: React.FC = () => {
 
         // run costume function
         const target = e.target as HTMLElement;
-        if (target && target.classList.contains("title")) {
-            console.log("hello");
+
+        if (target && target.classList.contains("navLink")) {
+            ball.current.classList.add("ball-zoom");
+        } else {
+            ball.current.classList.remove("ball-zoom");
         }
     };
 
+    const getWindowSize = () => {
+        setSize(window.innerWidth);
+    };
+
     useEffect(() => {
-        window.addEventListener("resize", () => setSize(window.innerWidth));
+        window.addEventListener("resize", getWindowSize);
         if (size > 960) {
             window.addEventListener("mousemove", moveCoursorFunc);
             ball.current.style.display = "block";
@@ -52,7 +58,7 @@ const CursorFollowTs: React.FC = () => {
         }
         return () => {
             window.removeEventListener("mousemove", moveCoursorFunc);
-            window.addEventListener("resize", () => setSize(window.innerWidth));
+            window.removeEventListener("resize", getWindowSize);
         };
     });
     return (
