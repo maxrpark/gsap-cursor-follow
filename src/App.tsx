@@ -7,19 +7,16 @@ import About from "./pages/About";
 import { CursorFollowTs, CursorFollowJS, Navbar } from "./components";
 
 const App: React.FC = () => {
-    return (
-        <BrowserRouter>
-            <Navbar />
-            <CursorFollowTs />
-
-            {/* <CursorFollowJS /> */}
-            <h2 className='title'>hello</h2>
-            <Routes>
-                <Route path='/' element={<Home />}></Route>
-                <Route path='/about' element={<About />}></Route>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <CursorFollowTs />
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/about' element={<About />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
