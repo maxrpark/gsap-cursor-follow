@@ -14,7 +14,7 @@ I only adapted the code to use in React and I have been using on couple of proje
 npm install gsap
 ```
 
-Take a look at the React example on CodeSandBox or a simple vanilla js example on [codepen](https://codepen.io/maxrpark/pen/mdxyzOx).
+Take a look at the React example on [CodeSandBox](https://codesandbox.io/s/gsap-mouse-follow-yzifhp) or a simple vanilla js example on [codepen](https://codepen.io/maxrpark/pen/mdxyzOx).
 
 ### Show conditionally depending on the screen size
 
